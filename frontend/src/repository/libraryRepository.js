@@ -13,6 +13,10 @@ const LibraryService = {
         return axios.delete(`/books/delete/${id}`);
     },
 
+    takeBook: (id) => {
+        return axios.put(`/books/take/${id}`);
+    },
+
     fetchAuthors: () => {
         return axios.get("/books/authors");
     },

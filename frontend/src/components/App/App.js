@@ -36,6 +36,7 @@ class App extends Component {
                     <Route path={["/books", "/"]} exact render={() =>
                         <Books books={this.state.books}
                                onDelete={this.deleteBook}
+                               onTake={this.takeBook}
                                onEdit={this.getBook}/>}/>
                     <Route path={"/categories"} exact render={() =>
                         <Categories categories={this.state.categories}/>}/>
@@ -78,6 +79,13 @@ class App extends Component {
 
   deleteBook = (id) => {
       LibraryService.deleteBook(id)
+          .then(() => {
+              this.loadBooks();
+          })
+  }
+
+  takeBook = (id) => {
+      LibraryService.takeBook(id)
           .then(() => {
               this.loadBooks();
           })

@@ -88,6 +88,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Optional<Book> take(Long id) {
+        Book book = this.bookRepository.findById(id)
+                .orElseThrow(() -> new BookNotFoundException(id));
+
+        book.setAvailableCopies(book.getAvailableCopies()-1);
+
+        this.bookRepository.save(book);
+        return Optional.of(book);
+    }
+
+    @Override
     public void deleteById(Long id) {
         this.bookRepository.deleteById(id);
     }

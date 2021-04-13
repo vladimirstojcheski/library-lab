@@ -11,7 +11,7 @@ class Books extends React.Component {
         this.state = {
             page: 0,
             size: 5
-            
+
         }
     }
 
@@ -76,7 +76,7 @@ class Books extends React.Component {
     getBooksPage = (offset, nextPageOffset) => {
         return this.props.books.map((term, index) => {
             return (
-                <BookTerm term={term} onDelete={this.props.onDelete} onEdit={this.props.onEdit}/>
+                <BookTerm term={term} onDelete={this.props.onDelete} onEdit={this.props.onEdit} onTake={this.props.onTake}/>
             );
         }).filter((product, index) => {
             return index >= offset && index < nextPageOffset;
